@@ -28,6 +28,10 @@ public class CustomLinkList {
         return this.priority;
     }
 
+    public boolean hasNext() {
+        return (this.next != null);
+    }
+
     public CustomLinkList getNextNode() {
         return this.next;
     }
