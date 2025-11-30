@@ -3,6 +3,7 @@ public class PriorityQueue {
 
     private CustomLinkList list;
     private CustomLinkList lastValue;
+    private int size;
 
     private int minPriorityIndex = -1;
     private int minPriority = 2147483646;
@@ -19,16 +20,19 @@ public class PriorityQueue {
 
         CustomLinkList temp = list;
 
+        int index = 1;
+
         if (temp.getValue() != null) {
-            this.minPriorityIndex = 1;
+            this.minPriorityIndex = index;
             this.minPriority = temp.getValuePriority();
 
-            this.maxPriorityIndex = 1;
+            this.maxPriorityIndex = index;
             this.maxPriority = temp.getValuePriority();
         }
 
         while (temp.hasNext()) {
-
+            temp = temp.getNextNode();
+            temp 
         }
 
     }
