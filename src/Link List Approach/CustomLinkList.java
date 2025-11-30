@@ -1,0 +1,39 @@
+
+public class CustomLinkList {
+
+    private Object value;
+    private int priority;
+    private CustomLinkList next;
+
+    public CustomLinkList() {
+
+    }
+
+    public CustomLinkList(Object value, int priority) {
+        this.value = value;
+        this.priority = priority;
+    }
+
+    public CustomLinkList(int value[], int priority, CustomLinkList next) {
+        this.value = value;
+        this.priority = priority;
+        this.next = next;
+    }
+
+    public Object getValue() {
+        return this.value;
+    }
+
+    public int getValuePriority() {
+        return this.priority;
+    }
+
+    public CustomLinkList getNextNode() {
+        return this.next;
+    }
+
+    public void setNextNode(CustomLinkList newNext) {
+        this.next = newNext;
+    }
+
+}
