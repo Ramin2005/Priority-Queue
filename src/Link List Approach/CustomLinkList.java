@@ -31,7 +31,7 @@ public class CustomLinkList {
         return this.priority;
     }
 
-    public boolean hasNext() {
+    public boolean hasNextNode() {
         return (this.next != null);
     }
 
