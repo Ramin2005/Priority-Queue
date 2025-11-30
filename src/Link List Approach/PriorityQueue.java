@@ -33,7 +33,7 @@ public class PriorityQueue {
             this.maxPriority = temp.getValuePriority();
         }
 
-        while (temp.hasNext()) {
+        while (temp.hasNextNode()) {
             ++index;
 
             temp = temp.getNextNode();
