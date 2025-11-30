@@ -27,8 +27,16 @@ public class CustomLinkList {
         return this.value;
     }
 
+    public void setValue(Object newValue) {
+        this.value = newValue;
+    }
+
     public int getValuePriority() {
         return this.priority;
+    }
+
+    public void setPriority(int newPriority) {
+        this.priority = newPriority;
     }
 
     public boolean hasNextNode() {
