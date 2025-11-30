@@ -45,17 +45,17 @@ public class PriorityQueue {
                 this.maxPriority = tempPriority;
                 this.maxPriorityIndex = index;
 
-            } else if (tempPriority > this.maxPriority) {
+            } else if (tempPriority < this.minPriority) {
 
-                this.maxPriority = tempPriority;
-                this.maxPriorityIndex = index;
+                this.minPriority = tempPriority;
+                this.minPriorityIndex = index;
 
             }
 
         }
 
         this.size = index;
-        
+
     }
 
 }
