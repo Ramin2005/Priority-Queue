@@ -1,4 +1,7 @@
 
+/**
+ * This link list customized to stores priority value for each value and any value type.
+ */
 public class CustomLinkList {
 
     private Object value;
