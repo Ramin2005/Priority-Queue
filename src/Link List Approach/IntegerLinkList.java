@@ -17,8 +17,12 @@ public class IntegerLinkList {
         this.next = next;
     }
 
-    public int getValue(){
+    public int getValue() {
         return this.value;
+    }
+
+    public IntegerLinkList getNextNode() {
+        return this.next;
     }
 
     public void setNextNode(IntegerLinkList newNext) {
