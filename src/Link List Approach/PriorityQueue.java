@@ -58,4 +58,74 @@ public class PriorityQueue {
 
     }
 
+    public int getSize() {
+        return this.size;
+    }
+
+    public int getMaxPriority() {
+        return this.maxPriority;
+    }
+
+    public int getMinPriority() {
+        return this.minPriority;
+    }
+
+    public void enQueueWithoutPriority(Object value, int priority) {
+        CustomLinkList temp = new CustomLinkList(value, priority);
+        this.lastValue.setNextNode(temp);
+        ++this.size;
+
+        if (priority > this.maxPriority) {
+
+            this.maxPriority = priority;
+            this.maxPriorityIndex = this.size;
+
+        } else if (priority < this.minPriority) {
+
+            this.minPriority = priority;
+            this.minPriorityIndex = this.size;
+
+        }
+    }
+
+    public void setAllyAt(Object value, int priority, int index) {
+        if (index < 1 || index > this.size) {
+            throw new RuntimeException("Index out of bounds!");
+        }
+
+        CustomLinkList temp = this.list;
+        for (int i = 1; i < index; i++) {
+            temp = temp.getNextNode();
+        }
+
+        temp.setValue(value);
+        temp.setPriority(priority);
+    }
+
+    public void setValueAt(Object value, int index) {
+        if (index < 1 || index > this.size) {
+            throw new RuntimeException("Index out of bounds!");
+        }
+
+        CustomLinkList temp = this.list;
+        for (int i = 1; i < index; i++) {
+            temp = temp.getNextNode();
+        }
+
+        temp.setValue(value);
+    }
+
+    public void setValuePriorityAt(int priority, int index) {
+        if (index < 1 || index > this.size) {
+            throw new RuntimeException("Index out of bounds!");
+        }
+
+        CustomLinkList temp = this.list;
+        for (int i = 1; i < index; i++) {
+            temp = temp.getNextNode();
+        }
+
+        temp.setPriority(priority);
+    }
+
 }
