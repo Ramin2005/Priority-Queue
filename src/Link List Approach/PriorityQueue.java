@@ -98,6 +98,18 @@ public class PriorityQueue {
             temp = temp.getNextNode();
         }
 
+        if (priority > this.maxPriority) {
+
+            this.maxPriority = priority;
+            this.maxPriorityIndex = index;
+
+        } else if (priority < this.minPriority) {
+
+            this.minPriority = priority;
+            this.minPriorityIndex = index;
+
+        }
+
         temp.setValue(value);
         temp.setPriority(priority);
     }
@@ -125,7 +137,21 @@ public class PriorityQueue {
             temp = temp.getNextNode();
         }
 
+        if (priority > this.maxPriority) {
+
+            this.maxPriority = priority;
+            this.maxPriorityIndex = index;
+
+        } else if (priority < this.minPriority) {
+
+            this.minPriority = priority;
+            this.minPriorityIndex = index;
+
+        }
+
         temp.setPriority(priority);
     }
+
+    
 
 }
