@@ -95,11 +95,52 @@ public class PriorityQueue {
         }
 
         Object out = null;
+        int priority;
 
         out = this.list.getValue();
+        priority = this.list.getValuePriority();
 
         this.list = this.list.getNextNode();
         --this.size;
+
+        if (priority == this.maxPriority || priority == this.minPriority) {
+
+            CustomLinkList temp = list;
+
+            int index = 0;
+            int tempPriority;
+
+            if (temp.getValue() != null) {
+                ++index;
+
+                this.minPriorityIndex = index;
+                this.minPriority = temp.getValuePriority();
+
+                this.maxPriorityIndex = index;
+                this.maxPriority = temp.getValuePriority();
+            }
+
+            while (temp.hasNextNode()) {
+                ++index;
+
+                temp = temp.getNextNode();
+
+                tempPriority = temp.getValuePriority();
+
+                if (tempPriority > this.maxPriority) {
+
+                    this.maxPriority = tempPriority;
+                    this.maxPriorityIndex = index;
+
+                } else if (tempPriority < this.minPriority) {
+
+                    this.minPriority = tempPriority;
+                    this.minPriorityIndex = index;
+
+                }
+
+            }
+        }
 
         return out;
 
@@ -123,6 +164,42 @@ public class PriorityQueue {
                 out = nextTemp.getValue();
                 beforeTemp.setNextNode(nextTemp.getNextNode());
                 --this.size;
+
+                CustomLinkList temp = this.list;
+
+                int index = 0;
+                int tempPriority;
+
+                if (temp.getValue() != null) {
+                    ++index;
+
+                    this.minPriorityIndex = index;
+                    this.minPriority = temp.getValuePriority();
+
+                    this.maxPriorityIndex = index;
+                    this.maxPriority = temp.getValuePriority();
+                }
+
+                while (temp.hasNextNode()) {
+                    ++index;
+
+                    temp = temp.getNextNode();
+
+                    tempPriority = temp.getValuePriority();
+
+                    if (tempPriority > this.maxPriority) {
+
+                        this.maxPriority = tempPriority;
+                        this.maxPriorityIndex = index;
+
+                    } else if (tempPriority < this.minPriority) {
+
+                        this.minPriority = tempPriority;
+                        this.minPriorityIndex = index;
+
+                    }
+
+                }
 
             }
 
