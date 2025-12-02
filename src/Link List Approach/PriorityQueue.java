@@ -88,7 +88,32 @@ public class PriorityQueue {
         }
     }
 
-    public void setAllyAt(Object value, int priority, int index) {
+    public Object normalDeQueue() {
+
+        if (this.size == 0) {
+            throw new RuntimeException("Queue is empty!");
+        }
+
+        Object out;
+
+        out = this.list.getValue();
+
+        this.list = this.list.getNextNode();
+        --this.size;
+
+        return out;
+
+    }
+
+    public Object priorityDeQueue() {
+
+        if (this.size == 0) {
+            throw new RuntimeException("Queue is empty!");
+        }
+
+    }
+
+    public void setAllAt(Object value, int priority, int index) {
         if (index < 1 || index > this.size) {
             throw new RuntimeException("Index out of bounds!");
         }
@@ -151,7 +176,5 @@ public class PriorityQueue {
 
         temp.setPriority(priority);
     }
-
-    
 
 }
