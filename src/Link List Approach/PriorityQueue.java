@@ -94,7 +94,7 @@ public class PriorityQueue {
             throw new RuntimeException("Queue is empty!");
         }
 
-        Object out;
+        Object out = null;
 
         out = this.list.getValue();
 
@@ -105,11 +105,37 @@ public class PriorityQueue {
 
     }
 
-    public Object priorityDeQueue() {
+    public Object maxPriorityDeQueue() {
 
         if (this.size == 0) {
             throw new RuntimeException("Queue is empty!");
         }
+
+        Object out = null;
+
+        CustomLinkList beforeTemp = null;
+        CustomLinkList nextTemp = this.list;
+
+        while (out == null && nextTemp != null) {
+
+            if (nextTemp.getValuePriority() == this.maxPriority) {
+
+                out = nextTemp.getValue();
+                beforeTemp.setNextNode(nextTemp.getNextNode());
+                --this.size;
+
+            }
+
+            beforeTemp = nextTemp;
+            if (nextTemp.hasNextNode()) {
+                nextTemp = nextTemp.getNextNode();
+            } else {
+                nextTemp = null;
+            }
+
+        }
+
+        return out;
 
     }
 
