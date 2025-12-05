@@ -156,6 +156,14 @@ public class PriorityQueue {
         return this.minPriority;
     }
 
+    public int getMaxPriorityIndex() {
+        return this.maxPriorityIndex;
+    }
+
+    public int getMinPriorityIndex() {
+        return this.minPriorityIndex;
+    }
+
     public Object normalDeQueue() {
 
         if (this.size == 0) {
