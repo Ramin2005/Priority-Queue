@@ -60,7 +60,7 @@ public class PriorityQueue {
 
     }
 
-    // set methods
+    // EnQueue Method:
     public void enQueueWithoutPriority(Object value, int priority) {
         CustomLinkList temp = new CustomLinkList(value, priority);
         this.lastValue.setNextNode(temp);
@@ -79,91 +79,7 @@ public class PriorityQueue {
         }
     }
 
-    public void setAllAt(Object value, int priority, int index) {
-        if (index < 1 || index > this.size) {
-            throw new RuntimeException("Index out of bounds!");
-        }
-
-        CustomLinkList temp = this.list;
-        for (int i = 1; i < index; i++) {
-            temp = temp.getNextNode();
-        }
-
-        if (priority > this.maxPriority) {
-
-            this.maxPriority = priority;
-            this.maxPriorityIndex = index;
-
-        } else if (priority < this.minPriority) {
-
-            this.minPriority = priority;
-            this.minPriorityIndex = index;
-
-        }
-
-        temp.setValue(value);
-        temp.setPriority(priority);
-    }
-
-    public void setValueAt(Object value, int index) {
-        if (index < 1 || index > this.size) {
-            throw new RuntimeException("Index out of bounds!");
-        }
-
-        CustomLinkList temp = this.list;
-        for (int i = 1; i < index; i++) {
-            temp = temp.getNextNode();
-        }
-
-        temp.setValue(value);
-    }
-
-    public void setValuePriorityAt(int priority, int index) {
-        if (index < 1 || index > this.size) {
-            throw new RuntimeException("Index out of bounds!");
-        }
-
-        CustomLinkList temp = this.list;
-        for (int i = 1; i < index; i++) {
-            temp = temp.getNextNode();
-        }
-
-        if (priority > this.maxPriority) {
-
-            this.maxPriority = priority;
-            this.maxPriorityIndex = index;
-
-        } else if (priority < this.minPriority) {
-
-            this.minPriority = priority;
-            this.minPriorityIndex = index;
-
-        }
-
-        temp.setPriority(priority);
-    }
-
-    //  get methods
-    public int getSize() {
-        return this.size;
-    }
-
-    public int getMaxPriority() {
-        return this.maxPriority;
-    }
-
-    public int getMinPriority() {
-        return this.minPriority;
-    }
-
-    public int getMaxPriorityIndex() {
-        return this.maxPriorityIndex;
-    }
-
-    public int getMinPriorityIndex() {
-        return this.minPriorityIndex;
-    }
-
+    // DeQueue methods:
     public Object normalDeQueue() {
 
         if (this.size == 0) {
@@ -380,6 +296,170 @@ public class PriorityQueue {
             } else {
 
                 nextTemp = null;
+
+            }
+
+        }
+
+        if (out == null) {
+
+            throw new RuntimeErrorException(null, "Queue is Damaged!");
+
+        }
+
+        return out;
+
+    }
+
+    // set methods
+    public void setAllAt(Object value, int priority, int index) {
+        if (index < 1 || index > this.size) {
+            throw new RuntimeException("Index out of bounds!");
+        }
+
+        CustomLinkList temp = this.list;
+        for (int i = 1; i < index; i++) {
+            temp = temp.getNextNode();
+        }
+
+        if (priority > this.maxPriority) {
+
+            this.maxPriority = priority;
+            this.maxPriorityIndex = index;
+
+        } else if (priority < this.minPriority) {
+
+            this.minPriority = priority;
+            this.minPriorityIndex = index;
+
+        }
+
+        temp.setValue(value);
+        temp.setPriority(priority);
+    }
+
+    public void setValueAt(Object value, int index) {
+        if (index < 1 || index > this.size) {
+            throw new RuntimeException("Index out of bounds!");
+        }
+
+        CustomLinkList temp = this.list;
+        for (int i = 1; i < index; i++) {
+            temp = temp.getNextNode();
+        }
+
+        temp.setValue(value);
+    }
+
+    public void setValuePriorityAt(int priority, int index) {
+        if (index < 1 || index > this.size) {
+            throw new RuntimeException("Index out of bounds!");
+        }
+
+        CustomLinkList temp = this.list;
+        for (int i = 1; i < index; i++) {
+            temp = temp.getNextNode();
+        }
+
+        if (priority > this.maxPriority) {
+
+            this.maxPriority = priority;
+            this.maxPriorityIndex = index;
+
+        } else if (priority < this.minPriority) {
+
+            this.minPriority = priority;
+            this.minPriorityIndex = index;
+
+        }
+
+        temp.setPriority(priority);
+    }
+
+    //  get methods
+    public int getSize() {
+        return this.size;
+    }
+
+    public int getMaxPriority() {
+        return this.maxPriority;
+    }
+
+    public int getMinPriority() {
+        return this.minPriority;
+    }
+
+    public int getMaxPriorityIndex() {
+        return this.maxPriorityIndex;
+    }
+
+    public int getMinPriorityIndex() {
+        return this.minPriorityIndex;
+    }
+
+    public Object getMaxPriorityValue() {
+
+        if (this.size == 0) {
+            throw new RuntimeException("Queue is empty!");
+        }
+
+        Object out = null;
+
+        CustomLinkList Temp = this.list;
+
+        while (out == null && Temp != null) {
+
+            if (Temp.getValuePriority() == this.maxPriority) {
+
+                out = Temp.getValue();
+            }
+
+            if (Temp.hasNextNode()) {
+
+                Temp = Temp.getNextNode();
+
+            } else {
+
+                Temp = null;
+
+            }
+
+        }
+
+        if (out == null) {
+
+            throw new RuntimeErrorException(null, "Queue is Damaged!");
+
+        }
+
+        return out;
+
+    }
+
+    public Object getMinPriorityValue() {
+
+        if (this.size == 0) {
+            throw new RuntimeException("Queue is empty!");
+        }
+
+        Object out = null;
+
+        CustomLinkList Temp = this.list;
+
+        while (out == null && Temp != null) {
+
+            if (Temp.getValuePriority() == this.minPriority) {
+
+                out = Temp.getValue();
+            }
+
+            if (Temp.hasNextNode()) {
+
+                Temp = Temp.getNextNode();
+
+            } else {
+
+                Temp = null;
 
             }
 
