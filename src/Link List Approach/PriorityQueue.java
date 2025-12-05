@@ -1,4 +1,6 @@
 
+import javax.management.RuntimeErrorException;
+
 public class PriorityQueue {
 
     private CustomLinkList list;
@@ -206,6 +208,7 @@ public class PriorityQueue {
                 }
 
             }
+
         }
 
         return out;
@@ -267,18 +270,125 @@ public class PriorityQueue {
 
                 }
 
+                if (index != this.size) {
+
+                    throw new RuntimeErrorException(null, "Queue is Damaged!");
+
+                }
+
             }
 
             beforeTemp = nextTemp;
             if (nextTemp.hasNextNode()) {
+
                 nextTemp = nextTemp.getNextNode();
+
             } else {
+
                 nextTemp = null;
+
             }
+
+        }
+
+        if (out == null) {
+
+            throw new RuntimeErrorException(null, "Queue is Damaged!");
 
         }
 
         return out;
 
+    }
+
+    public Object minPriorityDeQueue() {
+
+        if (this.size == 0) {
+            throw new RuntimeException("Queue is empty!");
+        }
+
+        Object out = null;
+
+        CustomLinkList beforeTemp = null;
+        CustomLinkList nextTemp = this.list;
+
+        while (out == null && nextTemp != null) {
+
+            if (nextTemp.getValuePriority() == this.minPriority) {
+
+                out = nextTemp.getValue();
+                beforeTemp.setNextNode(nextTemp.getNextNode());
+                --this.size;
+
+                CustomLinkList temp = this.list;
+
+                int index = 0;
+                int tempPriority;
+
+                if (temp.getValue() != null) {
+                    ++index;
+
+                    this.minPriorityIndex = index;
+                    this.minPriority = temp.getValuePriority();
+
+                    this.maxPriorityIndex = index;
+                    this.maxPriority = temp.getValuePriority();
+                }
+
+                while (temp.hasNextNode()) {
+                    ++index;
+
+                    temp = temp.getNextNode();
+
+                    tempPriority = temp.getValuePriority();
+
+                    if (tempPriority > this.maxPriority) {
+
+                        this.maxPriority = tempPriority;
+                        this.maxPriorityIndex = index;
+
+                    } else if (tempPriority < this.minPriority) {
+
+                        this.minPriority = tempPriority;
+                        this.minPriorityIndex = index;
+
+                    }
+
+                }
+
+                if (index != this.size) {
+
+                    throw new RuntimeErrorException(null, "Queue is Damaged!");
+
+                }
+
+            }
+
+            beforeTemp = nextTemp;
+            if (nextTemp.hasNextNode()) {
+
+                nextTemp = nextTemp.getNextNode();
+
+            } else {
+
+                nextTemp = null;
+
+            }
+
+        }
+
+        if (out == null) {
+
+            throw new RuntimeErrorException(null, "Queue is Damaged!");
+
+        }
+
+        return out;
+
+    }
+
+    // boolean methods:
+    public boolean isEmpty() {
+        return (this.size == 0);
     }
 }
