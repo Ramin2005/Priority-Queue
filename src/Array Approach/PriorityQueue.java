@@ -10,4 +10,11 @@ public class PriorityQueue {
 
     private int maxPriorityIndex = -1;
     private int maxPriority = -2147483648;
+
+    public PriorityQueue() {
+
+        this.size = 0;
+
+    }
+
 }
