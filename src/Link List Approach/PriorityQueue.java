@@ -39,6 +39,7 @@ public class PriorityQueue {
         }
 
         while (temp.hasNextNode()) {
+
             ++index;
 
             temp = temp.getNextNode();
@@ -130,6 +131,7 @@ public class PriorityQueue {
             }
 
             while (temp.hasNextNode()) {
+
                 ++index;
 
                 temp = temp.getNextNode();
@@ -181,6 +183,9 @@ public class PriorityQueue {
                 int tempPriority;
 
                 if (temp.getValue() != null) {
+
+                    this.lastValue = temp;
+
                     ++index;
 
                     this.minPriorityIndex = index;
@@ -191,9 +196,11 @@ public class PriorityQueue {
                 }
 
                 while (temp.hasNextNode()) {
+
                     ++index;
 
                     temp = temp.getNextNode();
+                    this.lastValue = temp;
 
                     tempPriority = temp.getValuePriority();
 
@@ -267,6 +274,9 @@ public class PriorityQueue {
                 int tempPriority;
 
                 if (temp.getValue() != null) {
+
+                    this.lastValue = temp;
+
                     ++index;
 
                     this.minPriorityIndex = index;
@@ -274,12 +284,15 @@ public class PriorityQueue {
 
                     this.maxPriorityIndex = index;
                     this.maxPriority = temp.getValuePriority();
+
                 }
 
                 while (temp.hasNextNode()) {
+
                     ++index;
 
                     temp = temp.getNextNode();
+                    this.lastValue = temp;
 
                     tempPriority = temp.getValuePriority();
 
