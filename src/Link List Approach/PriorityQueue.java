@@ -14,7 +14,7 @@ public class PriorityQueue {
     private int maxPriority = -2147483648;
 
     public PriorityQueue() {
-
+        this.size = 0;
     }
 
     public PriorityQueue(CustomLinkList data) {
@@ -319,7 +319,15 @@ public class PriorityQueue {
 
         CustomLinkList temp = this.data;
         for (int i = 1; i < index; i++) {
+
             temp = temp.getNextNode();
+
+            if (temp == null) {
+
+                throw new RuntimeErrorException(null, "Queue is Damaged!");
+
+            }
+
         }
 
         if (priority > this.maxPriority) {
@@ -345,7 +353,15 @@ public class PriorityQueue {
 
         CustomLinkList temp = this.data;
         for (int i = 1; i < index; i++) {
+
             temp = temp.getNextNode();
+
+            if (temp == null) {
+
+                throw new RuntimeErrorException(null, "Queue is Damaged!");
+
+            }
+
         }
 
         temp.setValue(value);
@@ -358,7 +374,15 @@ public class PriorityQueue {
 
         CustomLinkList temp = this.data;
         for (int i = 1; i < index; i++) {
+
             temp = temp.getNextNode();
+
+            if (temp == null) {
+
+                throw new RuntimeErrorException(null, "Queue is Damaged!");
+
+            }
+
         }
 
         if (priority > this.maxPriority) {
