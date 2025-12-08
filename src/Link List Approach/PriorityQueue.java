@@ -26,6 +26,9 @@ public class PriorityQueue {
         int tempPriority;
 
         if (temp.getValue() != null) {
+
+            this.lastValue = temp;
+
             ++index;
 
             this.minPriorityIndex = index;
@@ -39,6 +42,7 @@ public class PriorityQueue {
             ++index;
 
             temp = temp.getNextNode();
+            this.lastValue = temp;
 
             tempPriority = temp.getValuePriority();
 
@@ -61,9 +65,21 @@ public class PriorityQueue {
     }
 
     // EnQueue Method:
-    public void enQueueWithoutPriority(Object value, int priority) {
+    public void enQueue(Object value, int priority) {
         CustomLinkList temp = new CustomLinkList(value, priority);
-        this.lastValue.setNextNode(temp);
+
+        if (this.size == 0) {
+
+            this.data = temp;
+            this.lastValue = this.data;
+
+        } else {
+
+            this.lastValue.setNextNode(temp);
+            this.lastValue = lastValue.getNextNode();
+
+        }
+
         ++this.size;
 
         if (priority > this.maxPriority) {
@@ -77,6 +93,7 @@ public class PriorityQueue {
             this.minPriorityIndex = this.size;
 
         }
+
     }
 
     // DeQueue methods:
