@@ -86,7 +86,7 @@ public class PriorityQueue {
             throw new RuntimeException("Queue is empty!");
         }
 
-        Object out = null;
+        Object out;
         int priority;
 
         out = this.list.getValue();
