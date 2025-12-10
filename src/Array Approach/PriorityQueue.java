@@ -82,6 +82,160 @@ public class PriorityQueue {
 
     }
 
+    public Object normalDeQueue() {
+        Object tempValue = this.data[0];
+
+        Object[] tempData = new Object[this.size - 1];
+        int[] tempPriorities = new int[this.size - 1];
+
+        for (int i = 0; i < this.size - 1; i++) {
+
+            Object value = this.data[i + 1];
+            int priority = this.priorities[i + 1];
+
+            tempData[i] = value;
+            tempPriorities[i] = priority;
+
+            if (priority > this.maxPriority) {
+
+                this.maxPriority = priority;
+                this.maxPriorityIndex = i;
+                this.maxPriorityValue = value;
+
+            } else if (priority < this.minPriority) {
+
+                this.minPriority = priority;
+                this.minPriorityIndex = i;
+                this.minPriorityValue = value;
+
+            }
+        }
+
+        this.data = tempData;
+        this.priorities = tempPriorities;
+        --this.size;
+
+        return tempValue;
+    }
+
+    public Object MaxPriorityDeQueue() {
+        Object tempValue = this.data[this.maxPriorityIndex];
+
+        Object[] tempData = new Object[this.size - 1];
+        int[] tempPriorities = new int[this.size - 1];
+
+        for (int i = 0; i < this.maxPriorityIndex; i++) {
+
+            Object value = this.data[i];
+            int priority = this.priorities[i];
+
+            tempData[i] = value;
+            tempPriorities[i] = priority;
+
+            if (priority > this.maxPriority) {
+
+                this.maxPriority = priority;
+                this.maxPriorityIndex = i;
+                this.maxPriorityValue = value;
+
+            } else if (priority < this.minPriority) {
+
+                this.minPriority = priority;
+                this.minPriorityIndex = i;
+                this.minPriorityValue = value;
+
+            }
+        }
+
+        for (int i = this.maxPriority; i < this.size - 1; i++) {
+
+            Object value = this.data[i + 1];
+            int priority = this.priorities[i + 1];
+
+            tempData[i] = value;
+            tempPriorities[i] = priority;
+
+            if (priority > this.maxPriority) {
+
+                this.maxPriority = priority;
+                this.maxPriorityIndex = i;
+                this.maxPriorityValue = value;
+
+            } else if (priority < this.minPriority) {
+
+                this.minPriority = priority;
+                this.minPriorityIndex = i;
+                this.minPriorityValue = value;
+
+            }
+        }
+
+        this.data = tempData;
+        this.priorities = tempPriorities;
+        --this.size;
+
+        return tempValue;
+    }
+
+    public Object MinPriorityDeQueue() {
+        Object tempValue = this.data[this.minPriorityIndex];
+
+        Object[] tempData = new Object[this.size - 1];
+        int[] tempPriorities = new int[this.size - 1];
+
+        for (int i = 0; i < this.minPriorityIndex; i++) {
+
+            Object value = this.data[i];
+            int priority = this.priorities[i];
+
+            tempData[i] = value;
+            tempPriorities[i] = priority;
+
+            if (priority > this.maxPriority) {
+
+                this.maxPriority = priority;
+                this.maxPriorityIndex = i;
+                this.maxPriorityValue = value;
+
+            } else if (priority < this.minPriority) {
+
+                this.minPriority = priority;
+                this.minPriorityIndex = i;
+                this.minPriorityValue = value;
+
+            }
+        }
+
+        for (int i = this.minPriority; i < this.size - 1; i++) {
+
+            Object value = this.data[i + 1];
+            int priority = this.priorities[i + 1];
+
+            tempData[i] = value;
+            tempPriorities[i] = priority;
+
+            if (priority > this.maxPriority) {
+
+                this.maxPriority = priority;
+                this.maxPriorityIndex = i;
+                this.maxPriorityValue = value;
+
+            } else if (priority < this.minPriority) {
+
+                this.minPriority = priority;
+                this.minPriorityIndex = i;
+                this.minPriorityValue = value;
+
+            }
+        }
+
+        this.data = tempData;
+        this.priorities = tempPriorities;
+        --this.size;
+
+        return tempValue;
+    }
+
     public int getMinPriorityIndex() {
         return minPriorityIndex;
     }
