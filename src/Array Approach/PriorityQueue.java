@@ -89,4 +89,12 @@ public class PriorityQueue {
     public int getMaxPriorityIndex() {
         return maxPriorityIndex;
     }
+
+    public Object getMinPriorityValue() {
+        return minPriorityValue;
+    }
+
+    public Object getMaxPriorityValue() {
+        return maxPriorityValue;
+    }
 }
